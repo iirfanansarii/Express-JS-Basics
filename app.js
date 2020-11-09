@@ -13,9 +13,11 @@ const app = express();
 //import morgan
 const morgan = require('morgan');
 
-//invoke morgan function
+//middleware and static files
+//anythig inside static file folder gonna be static at front end
+app.use(express.static('static file'));
 app.use(morgan('dev'));
-console.log(morgan);
+
 
 app.get('/',(req,res) =>{
 res.sendFile('./views/index.html',{root : __dirname});
@@ -25,12 +27,6 @@ app.get("/about", (req, res) => {
   res.sendFile("./views/about.html", { root: __dirname });
 });
 
-
-//redirects
-//redirects method redirects the html page and also sets the status code
-app.get('/about-us',(req,res) =>{
-res.redirect('/about');
-})
 
 /*404 page 
 * use is a middleware function  
