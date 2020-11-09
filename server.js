@@ -11,20 +11,6 @@ const lod = require('lodash');
 //create server
 const server = http.createServer((req, res) => {
  
-
-//lodash is a random method to generate a random number when browser refresh 
-const num = lod.random(0,24);
-console.log(num);
-
-
-//lodash once method to run a functon only once even function repeated
-const  greet = lod.once(() =>{
-console.log('hello');
-})
-
-greet();
-greet();
-
  //set header content type
  res.setHeader('Content-Type','text/html');
 
