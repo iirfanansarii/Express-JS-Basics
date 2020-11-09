@@ -6,6 +6,28 @@ const express = require("express");
 //express app
 const app = express();
 
+/*Middleware 
+*use: middleware function
+*next:middleware function to move next function 
+*middleware always starts from top to bottom
+ */
+
+
+//middlleware
+app.use((req,res,next) => {
+  console.log('middleware');
+  console.log("host",req.hostname);
+  console.log("path",req.path);
+  console.log("mthod",req.method);
+  next();
+});
+
+//if we won't use next() function the code won't go to next function
+
+app.use((req, res, next) => {
+  console.log("in the next middleware");
+  next();
+});
 
 app.get('/',(req,res) =>{
 res.sendFile('./views/index.html',{root : __dirname});
@@ -39,3 +61,4 @@ res.status(404).sendFile("./views/404.html", { root: __dirname });
 app.listen((3000));
 
 
+ 
