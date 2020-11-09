@@ -1,33 +1,21 @@
-/* Redirects and 404 */
-
 //import
 const express = require("express");
+
 
 //express app
 const app = express();
 
-/*Middleware 
-*use: middleware function
-*next:middleware function to move next function 
-*middleware always starts from top to bottom
+/* Third Party Middleware 
+* there many third party middleware here we gonna use morgan
+*npm install morgan
  */
 
+//import morgan
+const morgan = require('morgan');
 
-//middlleware
-app.use((req,res,next) => {
-  console.log('middleware');
-  console.log("host",req.hostname);
-  console.log("path",req.path);
-  console.log("mthod",req.method);
-  next();
-});
-
-//if we won't use next() function the code won't go to next function
-
-app.use((req, res, next) => {
-  console.log("in the next middleware");
-  next();
-});
+//invoke morgan function
+app.use(morgan('dev'));
+console.log(morgan);
 
 app.get('/',(req,res) =>{
 res.sendFile('./views/index.html',{root : __dirname});
