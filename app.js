@@ -18,7 +18,6 @@ app.get("/about", (req, res) => {
 
 //redirects
 //redirects method redirects the html page and also sets the status code
-
 app.get('/about-us',(req,res) =>{
 res.redirect('/about');
 })
@@ -29,8 +28,10 @@ res.redirect('/about');
 * when you type any ulr in the browser then it's going see is any match present in the express app if yes then shwo tha
 * other wise it will  show the 404.html file 
 */
+
+// here we have define status coz express doesnt know it is 404 page
 app.use((req,res) =>{
-res.sendFile("./views/404.html", { root: __dirname });
+res.status(404).sendFile("./views/404.html", { root: __dirname });
 
 })
 
