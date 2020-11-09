@@ -1,5 +1,3 @@
-/* Redirects and 404 */
-
 //import
 const express = require("express");
 
